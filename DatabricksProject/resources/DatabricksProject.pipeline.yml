@@ -1,0 +1,13 @@
+# The main pipeline for DatabricksProject
+resources:
+  pipelines:
+    DatabricksProject_pipeline:
+      name: DatabricksProject_pipeline
+      catalog: bizmetric_databricks_learning
+      schema: DatabricksProject_${bundle.target}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
